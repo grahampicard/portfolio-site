@@ -306,8 +306,11 @@ class Resume extends Component {
   render() {
     return (
       <div className="resume">
-        <h1>Interactive Resume</h1>
-        <p><em><span style={{color:"#47de9c", fontWeight:"bold"}}>Select </span>a bar to see details</em></p>
+        <div className="resume-heading">
+          <h1>Interactive Resume</h1>
+          <h4>When  |  Where  |  What</h4>
+          <p><em><span style={{"color":"#47de9c", "fontWeight": "bold"}}>Select </span>a bar to see details</em></p>
+        </div>
         <div className="flexColumns">
           <div className="topContainer">
             <div className="timelineDiv" ref="tl">
@@ -317,7 +320,9 @@ class Resume extends Component {
               <h2>Where</h2>
             </div>
           </div>
-          <div className="infoDiv" ref="info"></div>
+          <div className="infoDiv" ref="info">
+            <h2>What</h2>
+          </div>
           <div className="clearfix"></div>
         </div>
       </div>

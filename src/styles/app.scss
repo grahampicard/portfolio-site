@@ -1,5 +1,6 @@
 @import "~normalize.css/normalize.css";
-@import url('https://fonts.googleapis.com/css?family=Encode+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 
 html {
   box-sizing: border-box;
@@ -19,7 +20,7 @@ body,
     overflow:auto;
     overflow:initial;
     color: rgba(0,0,0,0.87);
-    font-family: Segoe UI, sans-serif;
+    font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -38,32 +39,45 @@ main {
 }
 
 .top-bar {
+  .name {
+    font-weight: bold;
+    font-size: 36px;
+    letter-spacing: 10px;
+  }
   position: fixed;
   top: 0;
   left: 0;
-  display: inline;
-  align-items: left;
+  display: flex;
+  flex-direction: row;
   padding-left: 3rem;
-  flex-flow: column;
+  margin: auto;
   height: 120px;
   width: 100%;
   z-index: 999;
-  background: rgba(255,255,255,.95);
-  border-bottom: solid .5px;
-  border-color: #cfcfcf;
-  a {
-    margin-right: 1.5rem;
-    color: #262c35;
-    text-decoration: none;
-    font-weight: 500;
-    align-items: left;
-    justify-content: left;
-    text-align: left;
-    &.active {
-      border-bottom: solid 2px;
-      border-color: #47de9c;
-      display: inline;
-      padding-bottom: 3px;
+  background: rgba(255,255,255,.97);
+  box-shadow: 4px 0px 10px 2px #c7d6d0;
+  align-items: center;
+  nav {
+    padding-left: 40px;
+    display: flex;
+    flex-direction: row;
+    a + a {
+      margin-left: 20px;
+    }
+    a {
+      color: #262c35;
+      text-decoration: none;
+      font-weight: 500;
+      align-items: left;
+      justify-content: left;
+      text-align: left;
+      &.active {
+        color: #47de9c;
+        border-bottom: 2px solid #47de9c;
+      }
+      &:hover {
+        border-bottom: 2px solid #47de9c;
+      }
     }
   }
 }
@@ -80,16 +94,72 @@ main {
   padding-bottom: 10rem;
 }
 
+.welcome {
+  text-align: center;
+  .welcome-text {
+    font-size: 72pt;
+  }
+  a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    &:hover {
+      color: #47de9c;
+    }
+  }
+  .timings {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+  }
+  .minute {
+    height: auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: baseline;
+    align-items: baseline;
+    align-content: flex-start;
+  }
+  .minute + .minute {
+    margin-left: 50px;
+  }
+}
+
 .home {
   text-align: left;
   align-self: center;
-  h2 {
-    margin-top: 0;
+  width: 100%;
+  a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    &:hover {
+      color: #47de9c;
+    }
   }
-  .lineItems {
-    padding-top: .25rem;
+  .contentRow {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 3rem;
+    h1 {
+      width: 300px;
+    }
+    .row-copy {
+      display: inline-block;
+    }
+  }
+  .headshot {
+    width: 40%;
+    min-width: 250px;
+    margin-left: 4rem;
+    float:right;
+    border-radius: 50%;
+    -webkit-shape-outside:circle();
+    shape-outside:circle();
   }
 }
+
 
 .resume {
   .topContainer {
@@ -100,7 +170,7 @@ main {
   .flexColumns {
     display: flex;
     flex-direction: column;
-    h3 {
+    h2 {
       text-align: center;
     }
   }
@@ -109,17 +179,9 @@ main {
     display: block;
     text-align: center;
   }
-  .infoDiv {
-    width: auto;
-  }
-  .clearfix {
-    height: 400px;
-  }
   .show {
-    text-align: left;
     display: flex;
     flex-direction: row;
-    padding-top: 1rem;
     padding-bottom: 2rem;
     margin-right: 20px;
     width: 100%;
@@ -129,7 +191,6 @@ main {
       text-align: center;
       width: 25%;
       align-self: center;
-      padding: 10px;
       height: auto;
     }
     ul {
@@ -214,32 +275,98 @@ main {
     border-radius: 15px;
   }
 }
+.clearfix {
+  height: 500px;
+  overflow: hidden;
+}
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
 	* h1 {
 		max-width: 100% !important;
+    text-align: center;
 	}
+  .top-bar {
+    height: 90px;
+    padding: 10px 0px 0px 0px;
+    align-self: center;
+    align-content: center;
+    text-align: center;
+    .name {
+      font-size: 28px;
+      letter-spacing: .02em;
+    }
+    flex-direction: column;
+    nav {
+      padding: 1rem
+    }
+  }
   .page {
     padding: calc(62px + 4rem) 1rem 0 1rem;
     width: 100%;
     margin: auto;
   }
-  .top-bar {
-    padding: 0 1rem;
+  .welcome {
+    .welcome-text {
+      font-size: 24pt;
+      font-weight: bold;
+    }
+    text-align: center;
+    .timings {
+      display: flex;
+      flex-direction: column;
+      padding-top: 0px;
+    }
+    .minute {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 40px;
+    }
+    .minute + .minute {
+      margin-left: 0;
+    }
+  }
+  .home {
+    .contentRow {
+      h1 {
+        width: auto;
+      }
+      .row-heading {
+        text-align: center;
+      }
+      display: flex;
+      flex-direction: column;
+      .headshot {
+        max-width: 400px;
+        width: 100%;
+        margin: auto auto 2rem auto;
+        -webkit-shape-outside:none;
+        shape-outside:none;
+      }
+    }
   }
   .resume {
+    .resume-heading {
+      text-align: center;
+    }
     .topContainer {
       flex-direction: column;
     }
     .show {
-      width: 100%;
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      margin: 40px auto auto auto;
       h2 {
         text-align: center;
-        align-self: flex-start;
-        width: 40%;
+        align-self: center;
+        width: auto;
       }
       ul {
-        width: 60%;
+        width: auto;
+        li {
+          margin-left: 0rem;
+        }
       }
     }
   }
@@ -261,21 +388,39 @@ main {
     .columns {
       flex-direction: column;
     }
+    .col2 {
+      margin-left: 0;
+    }
+    h4 {
+      text-align: center;
+    }
     img {
       max-width: 100%
     }
   }
 }
 
-@media screen and (max-width: 350px) {
-  .page {
-    padding-left: 0;
-    padding-right: 0;
-    .resume {
-      .infoDiv {
-        h2 {
-          text-align: left;
-        }
+@media screen and (max-width: 400px) {
+  .axisLabels {
+    font-size: smaller;
+  }
+  .resume {
+    .show {
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+      h2 {
+        width: auto;
+      }
+      ul {
+        width: auto;
+      }
+    }
+  }
+  .portfolio-item {
+    .columns {
+      .col2 {
+        margin-left: 0;
       }
     }
   }
