@@ -148,15 +148,24 @@ main {
     .row-copy {
       display: inline-block;
     }
+    .headshot {
+        border: 5px solid #47de9c;
+        border-radius: 50%;
+        float: right;
+        margin-left: 3rem;
+        width: 40%;
+        height: auto;
+    }
   }
-  .headshot {
-    width: 40%;
-    min-width: 250px;
-    margin-left: 4rem;
-    float:right;
-    border-radius: 50%;
-    -webkit-shape-outside:circle();
-    shape-outside:circle();
+  .socialMedia {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0px;
+    margin-left: 0px;
+    li + li {
+      margin-left: 20px;
+    }
   }
 }
 
@@ -276,7 +285,7 @@ main {
   }
 }
 .clearfix {
-  height: 500px;
+  height: 300px;
   overflow: hidden;
 }
 
