@@ -1,0 +1,45 @@
+var parseDate = d3.timeFormat("%d-%b-%y");
+var x = d3.scaleTime().rangeRound([0,500]);
+
+var axisPoints = [
+	{year:"2007", date:"1-Jan-07"},
+	{year:"08", date:"1-Jan-08"},
+	{year:"09", date:"1-Jan-09"},
+	{year:"10", date:"1-Jan-10"},
+	{year:"11", date:"1-Jan-11"},
+	{year:"12", date:"1-Jan-12"},
+	{year:"13", date:"1-Jan-13"},
+	{year:"14", date:"1-Jan-14"},
+	{year:"15", date:"1-Jan-15"},
+	{year:"16", date:"1-Jan-16"},
+]
+
+d = axisPoints[1]
+
+
+var parseTime = d3.timeParse("%d-%b-%y");
+var x = d3.scaleTime().rangeRound([0, width]);
+var y = d3.scaleLinear().rangeRound([height, 0]);
+
+
+
+  handleResize(e) {
+    this.setState({
+      windowHeight: window.innerHeight - 100,
+      windowWidth: window.innerWidth - 100
+    });
+    d3.selectAll("svg").remove()
+    d3.selectAll(".show").remove()
+    d3.selectAll(".hidden").remove()
+    this.createStuff()
+  }
+
+  componentDidMount() {
+    this.createStuff()
+    window.addEventListener('resize', ::this.handleResize)
+  }
+
+  componentWillUnmount() {
+    console.log("remove EL")
+    document.removeEventListener('resize', ::this.handleResize)
+  }
