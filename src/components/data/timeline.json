@@ -1,9 +1,66 @@
 [
-  {"id":1, "cat":"Education", "beg":"1-Jan-10", "end":"1-Apr-12", "desc":"<h2>Pepperdine University</h2><ul><li>BA Economics, BA Rhetoric</li><li>Florence, Italy International Program</li><li>Washington, D.C. Congressional Internship</li><li>Courses in econometrics, behavioral economics, and applied mathematics</li></ul>", "state": ["CA"]},
-  {"id":2, "cat":"Work", "beg":"1-May-10", "end":"1-Aug-10", "desc":"<h2>United States House of Representatives</h2><ul><li>Congressional Intern</li><li>Office of Rep. John Campbell - California 48th</li>", "state": ["VA"]},
-  {"id":3, "cat":"Work", "beg":"1-May-12", "end":"1-Jun-14", "desc":"<h2>Teach for America</h2><ul><li>Geometry and Algebra 2 Teacher, Greenville-Weston High School</li><li>Assoicate  Pathway Coordinator, School Leadership Team</li><li>Discovery-based learning professional development lead</li></ul>", "state": ["MS"]},
-  {"id":4,"cat":"Work","beg":"1-Jul-14","end":"1-Sep-14","desc":"<h2>National Geographic - Ice Cream Expedition</h2><ul><li>Ice cream truck national tour for Nat Geo Kids</li><li>Led educational programs to help kids understand how to explore their local communities</li></ul>", "state": ["GA", "AL", "TN", "KY", "IL", "MS", "LA"]},
-  {"id":5,"cat":"Play","beg":"1-Sep-14","end":"1-Jan-18","desc":"<h2>Music</h2><ul><li>Songwriting, scoring, arranging, and composition consulting</li><li>Guitar/Keys for local artists, recording sessions, and church worship bands</li></ul>", "state": ["CA", "NY"]},
-  {"id":7,"cat":"Work","beg":"1-Dec-14","end":"1-Jul-15","desc":"<h2>KIPP Foundation Research & Evaluation Team</h2><ul><li>Data collection, cleansing, & analysis</li><li>Automated reporting, VBA/SQL Server</li><li>Analysis decks, grant proposal preparation, and presentations</li></ul>", "state": ["CA"]},
-  {"id":8,"cat":"Work","beg":"1-Jul-15","end":"1-Jan-18","desc":"<h2>KIPP Foundation Insight & Analytics Team</h2><ul><li>Full-stack dashboard product development (SQL, Python, Tableau, HTML)</li><li>Academic data analysis and automated reporting lead</li><li>Program evaluation, progress monitoring consulting, and internal team support</li><li>Led data management trainings and visualization workshops</li></ul>", "state": ["CA", "NY"]}
+  {
+    "id":1,
+    "cat":"Education",
+    "beg":"1-Jan-10",
+    "end":"1-Apr-12",
+    "desc":"<h2>Pepperdine University</h2><ul><li>BA Economics, BA Rhetoric</li><li>Florence, Italy International Program</li><li>Washington, D.C. Congressional Internship</li><li>Courses in econometrics, behavioral economics, and applied mathematics</li></ul>",
+    "state": ["CA"]
+  },
+  {
+    "id":2,
+    "cat":"Work",
+    "beg":"1-May-10",
+    "end":"1-Aug-10",
+    "desc":"<h2>United States House of Representatives</h2><ul><li>Congressional Intern</li><li>Rep. John Campbell - California 48th</li>",
+    "state": ["VA"]
+  },
+  {
+    "id":3,
+    "cat":"Work",
+    "beg":"1-May-12",
+    "end":"1-Jun-14",
+    "desc":"<h2>Teach for America</h2><ul><li>Geometry and Algebra 2 Teacher, Greenville-Weston High School</li><li>Assoicate  Pathway Coordinator, School Leadership Team</li><li>Discovery-based learning professional development lead</li></ul>",
+    "state": ["MS"]
+  },
+  {
+    "id":4,
+    "cat":"Work",
+    "beg":"1-Jul-14",
+    "end":"1-Sep-14",
+    "desc":"<h2>National Geographic - Ice Cream Expedition</h2><ul><li>Led educational programs to help kids understand how to explore their local communities</li><li>Drove an ice cream truck</li></ul>",
+    "state": ["GA", "AL", "TN", "KY", "IL", "MS", "LA"]
+  },
+  {
+    "id":5,
+    "cat":"Play",
+    "beg":"1-Sep-14",
+    "end":"1-Jan-18",
+    "desc":"<h2>Music</h2><ul><li>Songwriting, scoring, arranging, and composition consulting</li><li>Guitar/Keys for local artists, recording sessions, and church worship bands</li></ul>",
+    "state": ["CA", "NY"]
+  },
+  {
+    "id":7,
+    "cat":"Work",
+    "beg":"1-Dec-14",
+    "end":"1-Jul-15",
+    "desc":"<h2>KIPP Foundation Research & Evaluation Team</h2><ul><li>Data collection, cleansing, & analysis</li><li>Automated reporting, VBA/SQL Server</li><li>Analysis decks, grant proposal preparation, and presentations</li></ul>",
+    "state": ["CA"]
+  },
+  {
+    "id":8,
+    "cat":"Work",
+    "beg":"1-Jul-15",
+    "end":"1-Jan-18",
+    "desc":"<h2>KIPP Foundation Insight & Analytics Team</h2><ul><li>Lead business intelligence product development</li><li>Automate strategic and operational insights</li><li>Program evaluation, progress monitoring consulting, and internal team support</li><li>Lead data management trainings and visualization workshops</li></ul>",
+    "state": ["CA", "NY"]
+  },
+  {
+    "id":5,
+    "cat":"Play",
+    "beg":"1-Nov-13",
+    "end":"1-Mar-14",
+    "desc":"<h2>Delta Center Stage</h2><ul><li>Cast member, Les Miserables</li></ul>",
+    "state": ["CA", "NY"]
+  }
 ]

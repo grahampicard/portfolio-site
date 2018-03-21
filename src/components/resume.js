@@ -154,7 +154,7 @@ class Resume extends Component {
   		.data(timeline)
   	  .enter().append("rect")
   	  	.attr("class","ganttRect")
-        .attr("rx", 4)
+        .attr("rx", 1)
   	    .attr("x", function(d) { return x(d.beg) })
   	    .attr("width", function(d) { return x(d.end) - x(d.beg) })
   	    .attr("y", function(d) {
@@ -204,6 +204,7 @@ class Resume extends Component {
             return "hidden"
           }
         })
+        
 
 
       // Create map section
@@ -323,7 +324,6 @@ class Resume extends Component {
           <div className="infoDiv" ref="info">
             <h2>What</h2>
           </div>
-          <div className="clearfix"></div>
         </div>
       </div>
     )

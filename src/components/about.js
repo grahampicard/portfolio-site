@@ -13,49 +13,35 @@ export default class About extends Component {
     return(
       <div className="home">
         <div className="contentRow">
-          <div className="row-heading">
-            <h1>About me</h1>
+          <div className="row-heading1">
+            <h1>About</h1>
+            <p>Insight Analyst and Business Intelligence Lead</p>
+            <p>Using data to make things happen</p>
+            <p>Based in NYC</p>
           </div>
-          <div className="rowCopy">
-            <img src={aboutMePic} alt="Headshot" className="headshot" />
-            <p>Thanks for visiting my homepage.</p>
-            <p>I am an Insight Analyst/Business
-               Intelligence Developer, focusing on end-to-end analysis projects.
-               I work at the intersection of data and strategy, and I'm intereseted
-               in making data easier for wide audiences to digest.
-            </p>
-            <p>I'm also a former high school teacher and a lifelong musician.
-               View my interactive <NavLink exact to="/resume">resume</NavLink> and
-               visit some of my side projects, like my <NavLink exact to="/portfolio/spotify-songkick-artist-tool"> Spotify & Songking Artist Tool </NavLink> to get to know what interests me.
-            </p>
+          <div className="row-heading2">
+            <h1>Contact</h1>
             <p>Send me an email at <a href="mailto:grahampicard@gmail.com">
-                grahampicard@gmail.com</a>.
+            grahampicard@gmail.com</a>.
             </p>
           </div>
-        </div>
-        <div className="contentRow">
-          <div className="row-heading">
+          <div className="row-heading3">
             <h1>Technology</h1>
+            <p>SQL (mssql/postgresql/mysql)</p>
+            <p>Python (pandas/numpy/sklearn/flask)</p>
+            <p>Tableau</p>
+            <p>R (shiny)</p>
+            <p>Javascript (d3/react)</p>
+            <p>VBA</p>
           </div>
-          <div className="rowCopy">
-            <li>SQL (mssql/postgresql/mysql)</li>
-            <li>Python (pandas/numpy/sklearn/flask)</li>
-            <li>Tableau</li>
-            <li>R (shiny)</li>
-            <li>Javascript (d3/react)</li>
-            <li>VBA</li>
-          </div>
-        </div>
-        <div className="contentRow">
-          <div className="row-heading">
+          <div className="row-heading4">
             <h1>Interests</h1>
+            <p>Full-stack development</p>
+            <p>Interactive design</p>
+            <p>Education</p>
+            <p>Music production</p>
           </div>
-          <div className="rowCopy">
-            <li>Interactive design</li>
-            <li>Education & mathematics instruction</li>
-            <li>Behavioral economics</li>
-            <li>Music production</li>
-          </div>
+          <img src={aboutMePic} alt="Headshot" className="headshot"/>
         </div>
         <Footer />
       </div>

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import * as d3 from 'd3'
 import Lightbox from 'react-image-lightbox'
+import { parse } from 'html-to-react'
+import components from './portfolio_items'
+
 
 
 export default class PortfolioItem extends Component {
@@ -12,23 +15,30 @@ export default class PortfolioItem extends Component {
       isOpen: false
 		};
     this.importImages = this.importImages.bind(this)
-	}
+  }
+  
+  componentWillMount() {
 
-  componentDidMount() {
+    this.setState({
+      images: this.importImages(require.context('./img', false, /\.(png)$/))
+    })
 		if (this.props.projects.length) {
 			this.renderPortfolioItem(this.props.projects);
-		}
-	}
+		}    
+  }
 
 	renderPortfolioItem(projects) {
     window.scrollTo(0, 0)
 		let project = projects.filter(p => {
 			return (p.id == this.props.match.params.id);
-		});
+    });
+    
+    let desc = components[this.props.match.params.id]
 
     this.setState({
       project: project[0],
-      image: project[0].id + '.png'
+      image: project[0].id + '.png',
+      description: desc
     });
 	}
 
@@ -42,20 +52,19 @@ export default class PortfolioItem extends Component {
   }
 
 	render() {
-    if(this.refs.pf) {
-      d3.select(this.refs.pf)
-        .html(this.state.project.description)
-    }
 
-    const { project, isOpen, image } = this.state
-    const images = this.importImages(require.context('./img', false, /\.(png)$/));
+    const { project, isOpen, image, description } = this.state
+
+    console.log(description)
 
 		return (
       <div className="portfolio-item">
         <h1>{ project.name }</h1>
         <div className="columns">
           <div className="text">
-            <div className="portfolioText" ref="pf"></div>
+            <div className="portfolioText" ref="pt">
+              {description()}
+            </div>
             <div className="goBack">
       				<a onClick={e => {
       				  e.preventDefault();
@@ -68,11 +77,11 @@ export default class PortfolioItem extends Component {
           <div className="col2">
             <p><em>Click to enlarge</em></p>
             <div className="portfolioImage">
-              <img src={images[image]} onClick={() => this.setState({ isOpen: true })}/>
+              <img src={this.state.images[image]} onClick={() => this.setState({ isOpen: true })}/>
             </div>
             {isOpen &&
                 <Lightbox
-                    mainSrc={images[image]}
+                    mainSrc={this.state.images[image]}
                     onCloseRequest={() => this.setState({ isOpen: false })}
                 />
             }
