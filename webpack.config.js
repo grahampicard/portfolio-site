@@ -76,11 +76,11 @@ module.exports = {
 								interlaced: false
 							},
 							optipng: {
-								optimizationLevel: 4
+								optimizationLevel: 1
 							},
 							pngquant: {
 								quality: "75-90",
-								speed: 4
+								speed: 10
 							}
 						}
 					}

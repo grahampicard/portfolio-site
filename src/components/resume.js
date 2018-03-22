@@ -1,16 +1,17 @@
 import React, { PropTypes, Component } from "react";
-import * as d3 from 'd3'
+import { 
+  select,
+  timeParse,
+  scaleTime,
+  extent,
+  scaleLinear
+} from 'd3'
 import axisPoints from 'json-loader!./data/axis'
 import timeline from 'json-loader!./data/timeline'
 import mapData from 'json-loader!./data/map'
 
 
 class Resume extends Component {
-  propTypes: {
-    id: PropTypes.string,
-    height: PropTypes.number,
-    width: PropTypes.number,
-  }
 
   constructor(props) {
     super(props);
@@ -44,6 +45,7 @@ class Resume extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0)
     this.createStuff()
   }
 
@@ -57,7 +59,7 @@ class Resume extends Component {
   // Context for D3 svgs
   setContext(context, id, height, width) {
     return (
-      d3.select(context).append('svg')
+      select(context).append('svg')
         .attr('id', id)
         .attr("height", height)
         .attr("width", width)
@@ -78,7 +80,7 @@ class Resume extends Component {
     var y_space = (this.state.tlHeight - y_start) / this.state.labels.length
 
     // Function
-    var parseTime = d3.timeParse("%d-%b-%y");
+    var parseTime = timeParse("%d-%b-%y");
 
     const {
       // Colors
@@ -101,9 +103,9 @@ class Resume extends Component {
     })
 
     // Scales
-    var x = d3.scaleTime().rangeRound([x_tick_start, x_end]);
-    x.domain(d3.extent(axisPoints, function(d) { return parseTime(d.date)}));
-    var y = d3.scaleLinear().range
+    var x = scaleTime().rangeRound([x_tick_start, x_end]);
+    x.domain(extent(axisPoints, function(d) { return parseTime(d.date)}));
+    var y = scaleLinear().range
 
 
     // Axes and Labels
@@ -186,7 +188,7 @@ class Resume extends Component {
         })
 
       // Create info section
-      var info = d3.select(this.refs.info).selectAll(".g")
+      var info = select(this.refs.info).selectAll(".g")
         .data(timeline).enter()
         .append("div")
         .html(function(d) { return d.desc })

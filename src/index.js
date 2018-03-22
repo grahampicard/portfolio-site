@@ -1,12 +1,12 @@
 import "./styles/app.scss";
-import React from "react";
-import TransitionGroup from 'react-transition-group/TransitionGroup'
+import React, { Component } from "react";
 import { render } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./components/app";
 
-const renderApp = Component =>
+
+const renderApp = (Component) =>
 	render(
 		<BrowserRouter>
 			<Component />

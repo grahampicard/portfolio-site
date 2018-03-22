@@ -56,16 +56,16 @@ export default class App extends Component {
                 )}
               />
               <Route
-                exact path='/about'
-                component={About}
-                key="about"/>
-              <Route
                 path="/portfolio/:id"
                 key=":id"
                 render={props => (
                   <PortfolioItem {...props} projects={ this.state.projects } />
                 )}
               />
+              <Route
+                exact path='/about'
+                component={About}
+                key="about"/>
             </AnimatedSwitch>
           </div>
       </div>

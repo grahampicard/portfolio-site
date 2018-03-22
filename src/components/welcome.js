@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import Footer from "./footer";
 
 
-export default class Test extends Component {
+export default class WelcomePage extends Component {
   constructor(props) {
 		super(props);
 	}

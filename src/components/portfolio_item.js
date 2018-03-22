@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import * as d3 from 'd3'
 import Lightbox from 'react-image-lightbox'
 import { parse } from 'html-to-react'
 import components from './portfolio_items'
-
 
 
 export default class PortfolioItem extends Component {
@@ -18,10 +16,6 @@ export default class PortfolioItem extends Component {
   }
   
   componentWillMount() {
-
-    this.setState({
-      images: this.importImages(require.context('./img', false, /\.(png)$/))
-    })
 		if (this.props.projects.length) {
 			this.renderPortfolioItem(this.props.projects);
 		}    
@@ -29,19 +23,21 @@ export default class PortfolioItem extends Component {
 
 	renderPortfolioItem(projects) {
     window.scrollTo(0, 0)
-		let project = projects.filter(p => {
+
+    const desc = components[this.props.match.params.id]
+    const pic = require('./img/' + this.props.match.params.id + '.png')
+    const project = projects.filter(p => {
 			return (p.id == this.props.match.params.id);
-    });
-    
-    let desc = components[this.props.match.params.id]
+    })
 
     this.setState({
       project: project[0],
-      image: project[0].id + '.png',
+      image: pic,
       description: desc
-    });
-	}
+    })
 
+  }
+  
   importImages(r) {
     let images = {};
     r.keys().map((item, index) => {
@@ -52,10 +48,7 @@ export default class PortfolioItem extends Component {
   }
 
 	render() {
-
     const { project, isOpen, image, description } = this.state
-
-    console.log(description)
 
 		return (
       <div className="portfolio-item">
@@ -77,11 +70,11 @@ export default class PortfolioItem extends Component {
           <div className="col2">
             <p><em>Click to enlarge</em></p>
             <div className="portfolioImage">
-              <img src={this.state.images[image]} onClick={() => this.setState({ isOpen: true })}/>
+              <img src={this.state.image} onClick={() => this.setState({ isOpen: true })}/>
             </div>
             {isOpen &&
                 <Lightbox
-                    mainSrc={this.state.images[image]}
+                    mainSrc={this.state.image}
                     onCloseRequest={() => this.setState({ isOpen: false })}
                 />
             }

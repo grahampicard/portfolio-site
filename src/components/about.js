@@ -7,9 +7,13 @@ import Footer from "./footer";
 export default class About extends Component {
 	constructor(props) {
 		super(props);
-	}
+  }
 
-  render() {
+  componentWillMount() {
+    window.scrollTo(0,0)
+  }
+
+  render() {    
     return(
       <div className="home">
         <div className="contentRow">
