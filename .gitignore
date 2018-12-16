@@ -1,6 +1,9 @@
-./src/dev/
+src/dev/
 node_modules/
 ws.codeworkspace
 yarn.lock
 .vs
 .vscode/
+references
+resumeapp
+workspace.code-workspace
