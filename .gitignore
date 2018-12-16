@@ -1,5 +1,5 @@
 ./src/dev/
-./node_modules/
+node_modules/
 ws.codeworkspace
 yarn.lock
 .vs
