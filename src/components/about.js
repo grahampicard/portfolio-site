@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link, NavLink } from "react-router-dom";
 import aboutMePic from "./img/about-me-pic.png";
 import Footer from "./footer";
 
@@ -19,14 +18,16 @@ export default class About extends Component {
         <div className="contentRow">
           <div className="row-heading1">
             <h1>About</h1>
-            <p>Insight Analyst and Business Intelligence Lead</p>
-            <p>Using data to make things happen</p>
-            <p>Based in NYC</p>
+            <p>MBA Candidate</p>
+            <p>Insights and Analytics</p>
+            <p>New Haven, CT</p>
           </div>
           <div className="row-heading2">
             <h1>Contact</h1>
-            <p>Send me an email at <a href="mailto:grahampicard@gmail.com">
-            grahampicard@gmail.com</a>.
+            <p>
+              <a href="mailto:grahampicard@gmail.com">
+                grahampicard@gmail.com
+              </a>
             </p>
           </div>
           <div className="row-heading3">

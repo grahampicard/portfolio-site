@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Lightbox from 'react-image-lightbox'
-import { parse } from 'html-to-react'
-import components from './portfolio_items'
+import components from './items'
 
 
 export default class PortfolioItem extends Component {

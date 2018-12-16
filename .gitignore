@@ -1,0 +1,6 @@
+./src/dev/
+./node_modules/
+ws.codeworkspace
+yarn.lock
+.vs
+.vscode/

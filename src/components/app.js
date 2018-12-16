@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { Route } from "react-router-dom"
-import PropTypes from 'prop-types'
 import { AnimatedSwitch } from 'react-router-transition';
 
 import TopBar from './top_bar'
@@ -11,7 +10,6 @@ import PortfolioItem from './portfolio_item'
 import About from './about';
 
 import portfolioData from 'json-loader!./data/portfolio'
-import { wbc } from './portfolio_items'
 
 
 export default class App extends Component {

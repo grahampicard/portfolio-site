@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from "react";
+import React, { Component } from "react";
 import { 
   select,
   timeParse,
@@ -15,20 +15,21 @@ class Resume extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       // Axis Labels
-      labels: [... new Set(timeline.map(item => item.cat))],
+      labels: [... new Set(timeline.map(item => item.cat))], 
 
-      tlHeight: (window.innerWidth <= 400) ? 310 * .625 : 200,
-      tlWidth: (window.innerWidth <= 400) ? 310 : 500,
-      mapHeight: (window.innerWidth <= 400) ? 310 * .625 : 400 * .625,
-      mapWidth: (window.innerWidth <= 400) ? 310 : 400,
+      tlHeight:     (window.innerWidth <= 400) ? 280 * .625 : 110,
+      tlWidth:      Math.min(window.innerWidth * .8, 500),
+      mapHeight:    Math.min(window.innerWidth * .8, 350) * .625,
+      mapWidth:     Math.min(window.innerWidth * .8, 350),
       windowHeight: window.innerHeight,
-      windowWidth: window.innerWidth,
+      windowWidth:  window.innerWidth,
 
       // Selected Color
-      fillColorSelected: "#47de9c",
-      strokeSelected: "#b3f5d9",
+      fillColorSelected: "#00adef",
+      strokeSelected: "#83c9f4",
 
       // Unselected Color
       fillColorUnselected: "#E9E9E9",
@@ -47,13 +48,25 @@ class Resume extends Component {
   componentDidMount() {
     window.scrollTo(0, 0)
     this.createStuff()
+    console.log(window.innerWidth)
   }
 
   createStuff() {
     // Create SVG elements in the DOM
-    const tlContext = this.setContext(this.refs.tl, 'tlContext', this.state.tlHeight, this.state.tlWidth)
-    const mapContext = this.setContext(this.refs.map, 'mapContext', this.state.mapHeight, this.state.mapWidth)
+    const tlContext = this.setContext(
+      this.refs.tl,
+      'tlContext', 
+      this.state.tlHeight,
+      this.state.tlWidth
+    )
+    const mapContext = this.setContext(
+      this.refs.map, 
+      'mapContext', 
+      this.state.mapHeight, 
+      this.state.mapWidth
+    )
     this.createtl(tlContext, mapContext, this.state.labels)
+
   }
 
   // Context for D3 svgs
@@ -71,15 +84,14 @@ class Resume extends Component {
   createtl(tlcontext, mapContext, labels) {
 
     // Dimensions
-
     var pad = this.state.tlWidth / 20
     var x_start = 10
     var x_tick_start = 100
     var x_end = this.state.tlWidth - pad
-    var y_start = this.state.tlHeight * .25
+    var y_start = this.state.tlHeight * .35
     var y_space = (this.state.tlHeight - y_start) / this.state.labels.length
 
-    // Function
+    // Axis scaling function
     var parseTime = timeParse("%d-%b-%y");
 
     const {
@@ -93,18 +105,47 @@ class Resume extends Component {
     } = this.state
 
     // Initial Data Treatment
-    var selected = 6
-    var selectedState = ["NY"]
+    var selected = 8
+    var selectedState = ["CT"]
+    
     timeline.forEach(function(d) {
-      if (typeof(d.beg) == "string") {
-        d.beg = parseTime(d.beg)
-        d.end = parseTime(d.end)
+
+      if (d.end == null) {
+        const monthNames = [
+          "Jan", 
+          "Feb", 
+          "Mar", 
+          "Apr", 
+          "May", 
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ];
+
+        const today = new Date()
+        const json_date = '{"date": "' + String(today.getDay()) + '-' + String(monthNames[today.getMonth()]) + '-' + String(today.getFullYear() - 2000) + '"}'
+        const json_loaded = JSON.parse(json_date);
+
+        d.end = json_loaded.date
       }
-    })
+
+    if (typeof(d.beg) === "string") {
+      d.beg = parseTime(d.beg)
+    }
+
+    if (typeof(d.end) === "string") {
+      d.end = parseTime(d.end)
+    }
+  })
 
     // Scales
     var x = scaleTime().rangeRound([x_tick_start, x_end]);
     x.domain(extent(axisPoints, function(d) { return parseTime(d.date)}));
+
     var y = scaleLinear().range
 
 
@@ -163,7 +204,7 @@ class Resume extends Component {
           return (labels.indexOf(d.cat) - .375) * y_space + y_start})
   	    .attr("height", y_space * .75 )
         .attr("stroke-opacity", 1)
-        .style("stroke-width", 3)
+        .style("stroke-width", 2)
         .style("cursor", "pointer")
         .attr("stroke", function(d, i) {
   	    	if (i==selected) {
@@ -207,7 +248,9 @@ class Resume extends Component {
           }
         })
         
-
+      var mapTitle = select(".mapDiv")
+        .append("h4")
+        .text(timeline[selected].location)
 
       // Create map section
       var map = mapContext.selectAll(".states")
@@ -278,6 +321,8 @@ class Resume extends Component {
           }
         })
 
+        mapTitle.transition()
+        .text(timeline[selected].location)
 
         // Update map
         map.transition()
@@ -312,21 +357,15 @@ class Resume extends Component {
         <div className="resume-heading">
           <h1>Interactive Resume</h1>
           <h4>When  |  Where  |  What</h4>
-          <p><em><span style={{"color":"#47de9c", "fontWeight": "bold"}}>Select </span>a bar to see details</em></p>
         </div>
-        <div className="flexColumns">
-          <div className="topContainer">
-            <div className="timelineDiv" ref="tl">
-              <h2>When</h2>
-            </div>
-            <div className="mapDiv" ref="map">
-              <h2>Where</h2>
-            </div>
+        <div className="resumeSpace">
+          <div className="flexColumns">
+            <p><em><span style={{"color":"#00adef", "fontWeight": "bold"}}>Select </span>a bar to see details</em></p>
+            <div className="timelineDiv" ref="tl"></div>
           </div>
-          <div className="infoDiv" ref="info">
-            <h2>What</h2>
-          </div>
-        </div>
+          <div className="infoDiv" ref="info"></div>
+          <div className="mapDiv" ref="map"></div>              
+        </div>          
       </div>
     )
   }
