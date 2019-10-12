@@ -38,7 +38,7 @@
     "react": "^15.6.1",
     "react-burger-menu": "^2.2.3",
     "react-dom": "^15.6.1",
-    "react-hot-loader": "next",
+    "react-hot-loader": "^4.5.3",
     "react-image-lightbox": "^4.1.0",
     "react-router-dom": "^4.1.1",
     "react-router-transition": "^1.2.1",
